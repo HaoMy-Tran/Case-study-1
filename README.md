@@ -71,7 +71,7 @@ Finnaly, I multiplied %cashback with GMV while ensuring the results always less 
 
 ```IF(I2/100*E2<10000,I2/100*E2,10000)```
 
-***The total Cashback Cost in Feburary was VND 3,009,699.94 VND (M2 cell)**
+**The total Cashback Cost in Feburary was VND 3,009,699.94 VND (M2 cell)**
 
 #### **Question 3** </br>
 (Part 1.Q3 worksheet) </br>
@@ -122,15 +122,15 @@ This type of cashback accounted for 9,4% of cost while it only made up 1,7% of `
 (Part 3.Q2 worksheet) </br>
 *"Gamification is usually a sensible option for apps to raise users’ stickiness. In our loyalty program development strategy, we also plan to hold a small game for users. The rule is simple: any users who can maintain a 20-day or longer streak of being in the DIAMOND ranking is a winner (in other words, winners are users who have total loyalty points greater than or equal to 5,000 for at least 20 consecutive days). We also want to give a special reward for the user(s) who can maintain the longest streak. Could you help us to calculate how many winners were there during the last thirty days in the given data (March 01 - March 31) and who was/were the one(s) boasting the longest streak during that time?"*
 
-According to the rules, the winners have to be in DIAMOND rank for at least 20 consecutive days. Therefore, it's easy to spot this trick: the last date for any user who wanted to win the game was March 12, 2022. This means on that day, the winners had already to be DIAMOND. So here's the solution: filtering all the users who are DIAMOND on March 12, 2022 and then seeing how long their DIAMOND streaks will last. </br>
+According to the rules, the winner has to be in DIAMOND rank for at least 20 consecutive days. Therefore, it's easy to spot this trick: the last date for any user who wanted to win the game was March 12, 2022. This means on that day, the winners had already to be DIAMOND. So here's the solution: filtering all the users who are DIAMOND on March 12, 2022 and then seeing how long their DIAMOND streaks will last. </br>
 Similarly to what we have done one the first question, picking a date (in this case is 03-12-2022) and finding the rank name of the users on that day. 
 
 ```SUMIFS(Transactions[Loyalty Points],Transactions[User_id],F7,Transactions[Start date],"<44632",Transactions[Start date],">=44602")``` (44632 = 03-12-2022)
 
-After filtering, we have a list of potential winners. Next, we need to observe the streak these users. I created a table with column is user id  and row header is days in Mar. To be easier to observe, I let the cell to display "DIAMOND" or blank:
+After filtering, we have a list of potential winners. Next, we need to observe the streak these users. I created a table with columns were ids of users and rowd were days in Mar. To be easier to observe, I let the cell to display "DIAMOND" or blank:
 
 ```IF(SUMIFS(Transactions[Loyalty Points],Transactions[User_id],$F2,Transactions[Start date],"<"&G$1,Transactions[Start date],">="&G$1-30)>=5000,"DIAMOND","")```
 
 From the Gamification table, Part 3.Q2 worksheet: </br>
-**There were 4 winners and 47662326 is the winners that had the special reward (F11:G12 range)**
+**There were 4 winners and 47662326 is the winner that had the special reward (F11:G12 range)**
 
