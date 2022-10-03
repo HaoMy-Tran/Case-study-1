@@ -30,16 +30,11 @@ Combining with ```Loyalty_Point``` table, I created a column ```Maximum Point```
 
 ```IF(QUOTIENT([@GMV],1000)*[@[Point Mechanism per 1000 GMV]]<= [@[Maximum points]],QUOTIENT([@GMV],1000)*[@[Point Mechanism per 1000 GMV]],[@[Maximum points]])```
 
-The ranking of users on a specific day depends on the accumulated loyalty points that they had. But there is one thing needs be noticed: loyalty points would expire after 30 days since the day transaction is made. I needed to know on the picked day (in this case is 03-31-2022), which transaction had their loyalty points usable/available. First, I created a new column named ```End date``` , which equals ```Start date``` adding 30 days, to have the usable time length of all transactions. If 03-31-2022 laid between the usable time length of any transactions, that transaction would return "YES" to the quesion "Is your loyalty point usable on 03-31-2022?", otherwise their loyalty point has expired or the transaction hasn't happened yet:
+The ranking of users on a specific day depends on the accumulated loyalty points that they had. But there is one thing needs be noticed: loyalty points would expire after 30 days since the day transaction is made. I needed to know on the picked day (in this case is 03-31-2022), which transaction had their loyalty points usable/available. I pulled list of user who have transactions from Mar 2 to Mar 3. Then I summed loyalty point by user_id (```Classes_of_users``` table in ```Part1.Q1``` worksheet): 
 
-```IF(AND([@[Start date]]<=Dashboard!$C$3,Dashboard!$C$3<[@[End date]]),"YES","NOT YET/NO")```
+```SUMIFS(Transactions[Loyalty Points],Transactions[User_id],A2,Transactions[Start date],"<=44651",Transactions[Start date],">44621")``` (44651= 3/31/2022,44621= 3/2/2022)
 
-After that, I used a filter to extract all the rows including the “YES” value. At this point, I had a list of users who have usable loyalty points on 03-31-2022. Then, I summed loyalty point by user_id (```Classes_of_users``` table in ```Part1.Q1``` worksheet):
-
-```SUMIFS(Transactions[Loyalty Points],Transactions[User_id],'Part 1.Q1'!A3,Transactions[Usable points?],"YES")```
-+ Identifying Rank name 
-
-I created ```Loyalty_Ranking``` table (```Loyalty Ranking``` worksheet) from the rules in the question requirement. Next, matched the Rank name for each user by reverse ```VLOOKUP```:
+I created ```Loyalty_Ranking``` table (```Loyalty Ranking``` worksheet) from the rules in the question requirement. Next, I matched the Rank name for each user by reverse ```VLOOKUP```:
 
 ```VLOOKUP(B2,CHOOSE({2,1},Loyalty_Ranking[Rank_name],Loyalty_Ranking[Loyalty Points]),2,TRUE)```
 
@@ -61,7 +56,7 @@ First, I filted all transactions in Feb (```Calculated_cashback_cost``` table, `
 
 Next, I combined with ```Loyalty Ranking table``` to find Class ID:
 
-```=VLOOKUP(G3,CHOOSE({3,2,1},Loyalty_Ranking[Class ID],Loyalty_Ranking[Rank_name],Loyalty_Ranking[Loyalty Points]),3,TRUE)```
+```VLOOKUP(G3,CHOOSE({3,2,1},Loyalty_Ranking[Class ID],Loyalty_Ranking[Rank_name],Loyalty_Ranking[Loyalty Points]),3,TRUE)```
 
 To find %cashback, there are 2 conditions needed to meet: ```Service Group``` and ```Class ID```. This means that we will do a VLOOKUP with two reference keys. The best way is to concatenate ```Service Group``` and ```Class ID``` in ```Loyalty_Ranking``` table to create a new only one key (```Cashback name``` column in ```Data. Loyalty benefits``` worksheet) then combine with ```Calculated_cashback_cost``` table to find %cashback:
 
@@ -122,7 +117,7 @@ This type of cashback accounted for 9,4% of cost while it only made up 1,7% of `
 (Part 3.Q2 worksheet) </br>
 *"Gamification is usually a sensible option for apps to raise users’ stickiness. In our loyalty program development strategy, we also plan to hold a small game for users. The rule is simple: any users who can maintain a 20-day or longer streak of being in the DIAMOND ranking is a winner (in other words, winners are users who have total loyalty points greater than or equal to 5,000 for at least 20 consecutive days). We also want to give a special reward for the user(s) who can maintain the longest streak. Could you help us to calculate how many winners were there during the last thirty days in the given data (March 01 - March 31) and who was/were the one(s) boasting the longest streak during that time?"*
 
-According to the rules, the winner has to be in DIAMOND rank for at least 20 consecutive days. Therefore, it's easy to spot this trick: the last date for any user who wanted to win the game was March 12, 2022. This means on that day, the winners had already to be DIAMOND. So here's the solution: filtering all the users who are DIAMOND on March 12, 2022 and then seeing how long their DIAMOND streaks will last. </br>
+According to the rules, the winner has to be in DIAMOND rank for at least 20 consecutive days. Therefore, it's easy to spot this trick: the last date for any user who wanted to win the game was March 12, 2022. This means on that day, the winners had already to be DIAMOND. So here's the solution: filtering all the users having the transactions after Feb 10 (30 days before Mar 12) to Mar 12 then checking who are DIAMOND on March 12, 2022. After that, tracking how long their DIAMOND streaks will last. </br>
 Similarly to what we have done one the first question, picking a date (in this case is 03-12-2022) and finding the rank name of the users on that day. 
 
 ```SUMIFS(Transactions[Loyalty Points],Transactions[User_id],F7,Transactions[Start date],"<44632",Transactions[Start date],">=44602")``` (44632 = 03-12-2022)
