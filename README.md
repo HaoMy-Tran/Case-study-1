@@ -1,6 +1,6 @@
 # Case-Study-1
 
-This is a Case study that I've got from a recruitment of a Fintech company. The objective is mainly about the effectiveness of brand-new program which had has just launched. All the information about this company was ommited or replaced. I thought this case was very interesting so I decided to give it a try to see how far I could go. So, my work is kept updating every time I have more ideas or find a effective solutions for the questions.</br>
+This is a Case study that I've got from a recruitment of a Fintech company. The objective is mainly about the effectiveness of brand-new program which had just been launched. All the information about this company was ommited or replaced. I thought this case was very interesting so I decided to give it a try to see how far I could go. So, my work is kept updating every time I have more ideas or find a effective solutions for the questions.</br>
 I have attached the case study (raw data and requirements) file and my answers for you to have a better comparison. You can open the Excel file while reading this. Also, you can have a look for Python version of my answers (includes Section A, Question 1&2 in Part 1 and Question 2 in Part 3 of Section B) with step-by-step explanation.
 So, let's dive in!
 
