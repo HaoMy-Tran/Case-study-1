@@ -96,19 +96,28 @@ All weekly retention streak were garthered and transfered to percentages, that's
 To access Customer Retention before and after the launch of Money Cashback program, I created a weekly retention chart for the same period of time in 2021, from Oct 2 to the end of 2021. </br>
 This is the chart of comparison of before and after Money Cashback program was launched.
 ![image](https://user-images.githubusercontent.com/106227875/193440552-42496746-3942-47fa-bff2-2e5496eda409.png) </br>
-Since the program was launched, the average customer retention has improved significantly. Even when we compare the retention rate of each week in 2022 with the average retention of Q4 2021, there always shows a dominant for weeks in 2022.
+Since the program was launched, the average customer retention has improved significantly. Even when we compare the retention rate of each week in 2022 with the average retention of Q4 2021, there always shows a dominant for weeks in 2022.</br>
+
+To increase user retention's performance, there are several strategies can be done. In this case, I suggest to narrow the scope to increase the user spending. 
+We can launch new/improve existing campaigns of: </br>
++ Usage: recommended cadence based on the purchase cycle of the product or service.</br>
++ Cross-sell: additional categories within brand portfolio.</br>
++ Upsell: affiliates purchase premium (higher value or higher margin) products or services within a specific category like marketplace.</br>
++ Personalizing customer program based on their demand,adding promotional offers to motivate usage, upsell and cross-sell through personalization. </br>
+
+Finally, we need to measure the effectiveness of the campaigns through online ```A/B testing``` of different personalizing customer offers and campaigns. </br>
 
 #### **Question 2** </br>
 (Part 2.Q2 worksheet) </br>
 *"The business is facing increasing amount of cashback cost as well as  GMV since launched. However, we want to optimize the cost but still want to keep growth of GMV and increase the retention rate.  Based on data given, please propose ideas to change the schemes of Loyalty benefits and Loyalty Points to alleviate the cost amount."*
 
-+ Marketplace4:
++ Marketplace4 and Marketplace3:
 
 Let's compare marketplace 1 and marketplace 2, they have the highest frequencies and ```%GMV``` in the marketplace group, even the ```Cashback Cost``` is 0. The one thing is ```Marketplace``` service has the same low ```Loyalty Points``` as other groups.  Accordingly, putting a high percentage of cashback in these groups does not pay off, compared with the high cost that we have to pay. Marketplace group was the highest of frequency and ```GMV``` before the Money Cashback program was launched. However, we should not turn the percentages to 0. That is because after the launch of the cashback program, the marketplace contributed a significant influence, at 68%, in the growth of ```GMV``` and 34% in the increase of customer retention.
 
 Proposed plan: set the ```marketplace4``` down to 3% and ```marketplace3``` down to 1%.
 
-+ Data2: 
++ Note for Data2
 
 This type of cashback accounted for 9,4% of cost while it only made up 1,7% of ```GMV```. That might be because of the high number of transactions. The Cashback program made the users head for paying in the marketplace, rather than data as they used to. The attribution of data payment frequency decreased from 42% to 30%. However, in general, this area is still doing great to keep customers in 2022. We can still keep a cashback plan for ```data2```.
 
